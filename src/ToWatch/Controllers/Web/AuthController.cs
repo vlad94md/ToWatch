@@ -37,6 +37,11 @@ namespace ToWatch.Controllers.Web
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByEmailAsync(model.Email);
+                if(user == null)
+                {
+                    ModelState.AddModelError("", "User with that email doesnt exists");
+                    return View(ModelState);
+                }
                 var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
            
                 if (signInResult.Succeeded)
