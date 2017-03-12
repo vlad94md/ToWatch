@@ -13,5 +13,7 @@ namespace ToWatch.ViewModels
 
         [Required]
         public string Password { get; set; }
+
+        public string Message { get; set; }
     }
 }

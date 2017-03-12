@@ -40,7 +40,7 @@ namespace ToWatch.Controllers.Web
                 if(user == null)
                 {
                     ModelState.AddModelError("", "User with that email doesnt exists");
-                    return View(ModelState);
+                    return View(model);
                 }
                 var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
            
@@ -53,7 +53,8 @@ namespace ToWatch.Controllers.Web
 
                     return Redirect(returnUrl);
                 }
-                ModelState.AddModelError("", "Username or password is incorrect");
+                ModelState.AddModelError("", "Password is incorrect");
+                return View(model);
             }
 
             return RedirectToAction("Index", "App");

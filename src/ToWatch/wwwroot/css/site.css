@@ -25,3 +25,7 @@ body {
     padding: 3rem 1.5rem;
     text-align: center;
 }
+
+.movies-containter {
+    max-width: 700px; 
+}
