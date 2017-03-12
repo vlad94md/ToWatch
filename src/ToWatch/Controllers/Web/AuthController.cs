@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ToWatch.Models;
 using ToWatch.ViewModels;
+using AutoMapper;
 
 namespace ToWatch.Controllers.Web
 {
     public class AuthController : Controller
     {
         private SignInManager<AppUser> signInManager;
+        private UserManager<AppUser> userManager;
 
-        public AuthController(SignInManager<AppUser> signInManager)
+        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             this.signInManager = signInManager;
+            this.userManager = userManager;
         }
 
         public IActionResult Login()
@@ -33,8 +36,9 @@ namespace ToWatch.Controllers.Web
         {
             if (ModelState.IsValid)
             {
-                var signInResult = await signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
-
+                var user = await userManager.FindByEmailAsync(model.Email);
+                var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
+           
                 if (signInResult.Succeeded)
                 {
                     if (string.IsNullOrWhiteSpace(returnUrl))
@@ -56,10 +60,27 @@ namespace ToWatch.Controllers.Web
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var tryGetEmail = await userManager.FindByEmailAsync(model.Email);
+
+                if (tryGetEmail == null)
+                {
+                    AppUser newUser = Mapper.Map<AppUser>(model);
+
+                    var result = await userManager.CreateAsync(newUser, model.Password);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "App");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User with that email already exists");
+                    return View(ModelState);
+                }
             }
 
             return View();

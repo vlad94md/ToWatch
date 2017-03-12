@@ -12,6 +12,8 @@ using Newtonsoft.Json.Serialization;
 using ToWatch.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ToWatch.Database;
+using AutoMapper;
+using ToWatch.ViewModels;
 
 namespace ToWatch
 {
@@ -47,6 +49,11 @@ namespace ToWatch
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<RegisterViewModel, AppUser>().ReverseMap();
+            });
+
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
