@@ -33,7 +33,7 @@ namespace ToWatch.Controllers.Web
         {
             if (ModelState.IsValid)
             {
-                var signInResult = await signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
+                var signInResult = await signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
 
                 if (signInResult.Succeeded)
                 {
@@ -47,7 +47,7 @@ namespace ToWatch.Controllers.Web
                 ModelState.AddModelError("", "Username or password is incorrect");
             }
 
-            return View();
+            return RedirectToAction("Index", "App");
         }
 
         public IActionResult Register()

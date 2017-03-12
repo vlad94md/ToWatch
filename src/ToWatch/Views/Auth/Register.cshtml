@@ -1,0 +1,39 @@
+﻿@model ToWatch.ViewModels.RegisterViewModel
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/css/signin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <form asp-controller="Auth" asp-action="Register" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" asp-for="Email" class="form-control" placeholder="Email address" required autofocus="">
+
+            <label for="inputPassword" class="sr-only">Username</label>
+            <input type="password" asp-for="Username" class="form-control" placeholder="Username" required>
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" asp-for="Password" class="form-control" placeholder="Password" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+
+    </div> <!-- /container -->
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
