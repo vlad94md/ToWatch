@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using ToWatch.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ToWatch.Database;
 
 namespace ToWatch
 {
@@ -29,10 +32,17 @@ namespace ToWatch
         {
             services.AddLogging();
             services.AddSingleton(configRoot);
+            services.AddDbContext<WatchContext>();
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
+            services.AddIdentity<AppUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+            })
+            .AddEntityFrameworkStores<WatchContext>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -45,6 +55,7 @@ namespace ToWatch
             }
 
             app.UseStaticFiles();
+            app.UseIdentity();
             app.UseMvc(config =>
             {
                 config.MapRoute(
