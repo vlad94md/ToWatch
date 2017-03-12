@@ -18,7 +18,7 @@
 
         <form asp-controller="Auth" asp-action="Register" class="form-signin">
             <h2 class="form-signin-heading">Please Register:</h2>
-            <span class="text text-danger" asp-validation-summary="ModelOnly"></spanclass="text>
+            <span class="text text-danger" asp-validation-summary="ModelOnly"></span>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" asp-for="Email" class="form-control" placeholder="Email address" required autofocus="">
             <span class="text text-danger"  asp-validation-for="Email"></span>
