@@ -22,10 +22,29 @@ body {
 }
 
 .main-content {
-    padding: 3rem 1.5rem;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
     text-align: center;
 }
 
+.main-search {
+    padding-bottom: 50px;
+}
+
+    .main-search .search-button {
+        background-color: rgb(212, 206, 27);
+    }
+
 .movies-containter {
-    max-width: 700px; 
+    margin: auto;
+    padding: 0px 50px;
+}
+
+.tabs-container{
+    background-color: rgb(70, 70, 60);
+}
+
+.tab-content {
+    padding: 0px 50px;
 }

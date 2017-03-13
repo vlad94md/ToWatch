@@ -1,10 +1,9 @@
 {
-	"version": "1.0.0",
-	"name": "asp.net",
-	"private": true,
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
   "devDependencies": {
     "angular": "~1.6.3",
-    "angular-route": "~1.6.3",
-    "bootstrap": "3.3.7"
+    "angular-route": "~1.6.3"
   }
 }
