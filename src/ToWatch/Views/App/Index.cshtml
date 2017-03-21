@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="main-content">
+<div class="main-content" ng-app="main">
     <h1>Let's find something To Watch!</h1>
     <div class="main-search row">
         <div class="col-lg-12">
@@ -17,35 +17,6 @@
     </div>
 
     <div class="movies-containter">
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Comming Soon</a></li>
-            <li role="presentation"><a href="#">Last Movies</a></li>
-            <li role="presentation"><a href="#">Top Rated</a></li>
-        </ul>
-
-        <div class="tabs-container panel panel-default ">
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="well well-lg">
-                        <h3>Star Wars</h3>
-                    </div>
-                    <div class="well well-lg">
-                        <h3>Home Alone</h3>
-                    </div>
-                    <div class="well well-lg">
-                        <h3>Matrix</h3>
-                    </div>
-                    <div class="well well-lg">
-                        <h3>Star Wars</h3>
-                    </div>
-                    <div class="well well-lg">
-                        <h3>Home Alone</h3>
-                    </div>
-                    <div class="well well-lg">
-                        <h3>Matrix</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div ng-view></div>
     </div>
 </div>
