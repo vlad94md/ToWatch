@@ -2,7 +2,23 @@
     <div class="panel-body">
         <div class="tab-content">
             <div class="well well-lg" ng-repeat="movie in upcommingMovies">
-                <h3>{{movie.title}}</h3>
+                <div class="row">
+                    <div id="movie-poster" class="col-lg-4">
+                        <img class="img-responsive" src="{{movie.posterPath}}" />
+                    </div>
+                    <div id="movie-description" class="col-lg-8">
+                        <h3>{{movie.title}}</h3>
+                        <hr/>
+                        <p>{{movie.overview}}</p>
+                        <div id="movie-popularity">
+                            <span class="fa fa-user lead"> {{movie.popularity}}</span>
+                        </div>
+                        <div id="movie-ratting">
+                            <span class="fa fa-star lead text-warning" > {{movie.voteAverage}}</span>
+                        </div>
+                        <a href="#" class="btn btn-primary pull-right">Details</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

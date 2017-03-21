@@ -31,8 +31,9 @@ namespace ToWatch.Controllers.Api
             {
                 var client = new HttpClient();
                 var json = await client.GetStringAsync(url);
+                var formattedJson = json.Replace("_", "");
 
-                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json);
+                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(formattedJson);
 
                 return Ok(movies);
             }
@@ -52,8 +53,9 @@ namespace ToWatch.Controllers.Api
             {
                 var client = new HttpClient();
                 var json = await client.GetStringAsync(url);
+                var formattedJson = json.Replace("_", "");
 
-                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json);
+                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(formattedJson);
 
                 return Ok(movies);
             }

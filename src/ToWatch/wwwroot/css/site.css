@@ -58,3 +58,15 @@ body {
 .tab-content {
     padding: 0px 50px;
 }
+
+#movie-poster img {
+    max-width: 250px;
+}
+
+#movie-description {
+    text-align: left;
+}
+
+#movie-description h3 {
+    margin-top: 5px;
+}
