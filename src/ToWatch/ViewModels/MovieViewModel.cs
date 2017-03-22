@@ -12,7 +12,7 @@ namespace ToWatch.ViewModels
         public bool Adult { get; set; }
         public string Overview { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public IEnumerable<int> Genres { get; set; }
+        public int[] GenreIds { get; set; }
         public string OriginalTitle { get; set; }
         public string OriginalLanguage { get; set; }
         public string Title { get; set; }

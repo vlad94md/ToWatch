@@ -46,15 +46,25 @@ body {
         box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(222, 216, 12, 0.6);
     }
 
-.movies-containter {
-    margin: auto;
-    padding: 0px 50px;
-}
-
 .tabs-container {
     background-color: rgb(70, 70, 60);
 }
 
-.tab-content {
-    padding: 0px 50px;
+
+.movie-poster img {
+    max-width: 250px;
 }
+
+.movie-description {
+    text-align: left;
+}
+
+.movie-description h3 {
+    margin-top: 5px;
+}
+
+/*.movie-details-button {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}*/
