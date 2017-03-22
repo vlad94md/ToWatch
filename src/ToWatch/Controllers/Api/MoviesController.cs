@@ -24,15 +24,9 @@ namespace ToWatch.Controllers.Api
         [HttpGet]
         public async Task<IActionResult> Upcomming()
         {
-            var apiKey = _config["Keys:ImdbApiKey"];
-            var url = $"https://api.themoviedb.org/3/movie/upcoming?api_key={apiKey}&language=en-US&page=1";
-
             try
             {
-                var client = new HttpClient();
-                var json = await client.GetStringAsync(url);
-
-                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json);
+                var movies = await GetMovieByCategory("upcoming");
 
                 return Ok(movies);
             }
@@ -45,21 +39,37 @@ namespace ToWatch.Controllers.Api
         [HttpGet]
         public async Task<IActionResult> TopRated()
         {
-            var apiKey = _config["Keys:ImdbApiKey"];
-            var url = $"https://api.themoviedb.org/3/movie/top_rated?api_key={apiKey}&language=en-US&page=1";
-
             try
             {
-                var client = new HttpClient();
-                var json = await client.GetStringAsync(url);
-
-                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json);
+                var movies = await GetMovieByCategory("top_rated");
 
                 return Ok(movies);
             }
             catch (Exception exception)
             {
                 return BadRequest(exception);
+            }
+        }
+
+        public async Task<MovieSetApiResponse> GetMovieByCategory(string category)
+        {
+            var apiKey = _config["Keys:ImdbApiKey"];
+            var queryString = $"{category}?api_key={apiKey}&language=en-US&page=1";
+            var url = $"https://api.themoviedb.org/3/movie/{queryString}";
+
+            try
+            {
+                var client = new HttpClient();
+                var json = await client.GetStringAsync(url);
+
+                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json.Replace("_",""));
+
+                return movies;
+            }
+            catch (Exception)
+            {
+                //Log
+                throw;
             }
         }
     }

@@ -18,7 +18,7 @@ namespace ToWatch.ViewModels
         public string Title { get; set; }
         public double Popularity { get; set; }
         public int VoteCount { get; set; }
-        public int VoteAverage { get; set; }
+        public double VoteAverage { get; set; }
         public string PosterPath
         {
             get { return "https://image.tmdb.org/t/p/w500" + _posterPath; }
