@@ -66,8 +66,8 @@ namespace ToWatch
             app.UseMvc(config =>
             {
                 config.MapRoute(
-                    name: "Default",
-                    template: "{controller}/{action}/{id?}",
+                    name: "Any",
+                    template: "{*catchall}",
                     defaults: new { controller = "App", action = "Index" }
                     );
             });

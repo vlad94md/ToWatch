@@ -1,14 +1,14 @@
 ﻿(() => {
     const app = angular.module("main");
 
-    app.controller("topRatedCtrl", topRatedCtrl);
+    app.controller("popularCtrl", popularCtrl);
 
-    function topRatedCtrl($scope, $http) {
+    function popularCtrl($scope, $http) {
         $scope.isLoaded = false;
 
-        $http.get("/api/movies/toprated").then((response) => {
+        $http.get("/api/movies/popular").then((response) => {
             $scope.movies = response.data.results;
-        }).finally(()=>{
+        }).finally(() => {
             $scope.isLoaded = true;
         });
     }

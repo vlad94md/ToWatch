@@ -22,7 +22,7 @@ namespace ToWatch.Controllers.Api
         }
 
         [HttpGet]
-        public async Task<IActionResult> Upcomming()
+        public async Task<IActionResult> Upcomming(int page)
         {
             try
             {
@@ -51,6 +51,20 @@ namespace ToWatch.Controllers.Api
             }
         }
 
+        public async Task<IActionResult> Popular(int page)
+        {
+            try
+            {
+                var movies = await GetMovieByCategory("popular");
+
+                return Ok(movies);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
+
         public async Task<MovieSetApiResponse> GetMovieByCategory(string category)
         {
             var apiKey = _config["Keys:ImdbApiKey"];
@@ -61,8 +75,9 @@ namespace ToWatch.Controllers.Api
             {
                 var client = new HttpClient();
                 var json = await client.GetStringAsync(url);
+                var formattedJson = json.Replace("_", "");
 
-                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(json.Replace("_",""));
+                var movies = JsonConvert.DeserializeObject<MovieSetApiResponse>(formattedJson);
 
                 return movies;
             }

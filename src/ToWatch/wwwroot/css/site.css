@@ -27,8 +27,8 @@ body {
 
 .main-content {
     padding-top: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
+    /*padding-right: 50px;
+    padding-left: 50px;*/
     text-align: center;
 }
 
@@ -68,3 +68,30 @@ body {
     left: 10px;
     bottom: 10px;
 }*/
+
+.pag-btns:hover{
+    z-index: 2;
+    color: #008cba;
+    background-color: #008cba;
+    border-color: transparent;
+}
+
+.spinner {
+    font-size: 40px;
+}
+    .spinner i{
+            color: #d4ce1b;
+    }
+
+
+#movie-list{
+  list-style: none;
+}
+  #movie-list li img {
+    width: 254px;
+    height: 381px;
+    float: left;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
