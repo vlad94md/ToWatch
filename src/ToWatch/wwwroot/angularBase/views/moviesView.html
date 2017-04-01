@@ -1,12 +1,16 @@
 ﻿<div class="row">
-    <div ng-show="!isLoaded" class="spinner"><i class="fa fa-spinner fa-spin"></i></div>
     <div class="container-fluid">
-        <ul id="movie-list">
-            <li  ng-repeat="movie in movies">
-                <div>
-                    <img class="img-responsive" src="{{movie.posterPath}}" />
-                </div>
-            </li>
-        </ul>
+        <div id="movie-container" >
+            <ul id="movie-list">
+                <li ng-repeat="movie in movies">
+                    <div>
+                        <img class="img-responsive" src="{{movie.posterPath}}" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="well-lg" style="height: 200px;">
+            <div ng-show="!isLoaded" class="spinner"><i class="fa fa-spinner fa-spin"></i></div>
+        </div>
     </div>
 </div>

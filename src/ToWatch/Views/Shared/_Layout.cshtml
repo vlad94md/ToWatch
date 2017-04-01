@@ -58,32 +58,28 @@
     <div>
         @RenderBody()
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">&copy; @DateTime.Now.Year Company, Inc..</p>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         $(() => {
-            $(window).bind("scroll", function () {
-                var windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-                var body = document.body, html = document.documentElement;
-                var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-                windowBottom = windowHeight + window.pageYOffset;
-                if (windowBottom >= docHeight) {
-                    console.log("123");
-                    //$http({
-                    //    url: "/api/movies/upcomming",
-                    //    method: "GET",
-                    //    params: { page: $scope.page }
-                    //}).then((response) => {
-                    //    debugger;
-                    //}).finally(() => {
-                    //    ++$scope.page;
-                    //});
+            //const defaultTab = "comming soon";
+            const tabList = document.getElementsByClassName("nav-tabs")[0];
+            const listItems = [].slice.call(tabList.children);
+            
+            if (!sessionStorage.activeTab) sessionStorage.activeTab = "comming soon";
+
+            listItems.forEach((item, index) => {
+                
+                if (item.innerText.toLowerCase() === sessionStorage.activeTab) {
+                    item.className = 'active';
+                }
+
+                item.onclick = () => {
+                    listItems.forEach((el) => {
+                        el.className = '';
+                    });
+
+                    item.className = 'active';
                 }
             });
         });

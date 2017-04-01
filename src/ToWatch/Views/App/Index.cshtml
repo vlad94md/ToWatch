@@ -3,20 +3,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="main-content" ng-app="main">
-    <div class="main-search row">
+    <div class="main-search" ng-controller="searchCtrl">
         <div class="col-lg-10 col-md-offset-1">
             <h1>Let's find something To Watch!</h1>
             <div class="input-group input-group-lg">
                 <span class="input-group-btn">
                     <button class="btn btn-default search-button" type="button">Go!</button>
                 </span>
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control" ng-change="testChange(modelArr)" ng-model="modelArr" placeholder="Search for...">
             </div>
         </div>
     </div>
-    <div class="row">
+    <div>
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a ng-href="/">Comming Soon</a></li>
+            <li role="presentation"><a ng-href="/">Comming Soon</a></li>
             <li role="presentation"><a ng-href="/popular">Popular</a></li>
             <li role="presentation"><a ng-href="/toprated">Top Rated</a></li>
         </ul>
@@ -31,6 +31,7 @@
     <script src="~/angularBase/controllers/topRatedCtrl.js"></script>
     <script src="~/angularBase/controllers/upcommingCtrl.js"></script>
     <script src="~/angularBase/controllers/popularCtrl.js"></script>
+    <script src="~/angularBase/controllers/searchCtrl.js"></script>
 }
 
 

@@ -5,7 +5,7 @@
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin: 0;
 }
 
 .footer {
@@ -34,6 +34,7 @@ body {
 
 .main-search {
     padding-bottom: 50px;
+    overflow: hidden;
 }
 
     .main-search .search-button {
@@ -85,13 +86,23 @@ body {
 
 
 #movie-list{
+  padding: 0;
   list-style: none;
+  overflow: hidden;
 }
-  #movie-list li img {
-    width: 254px;
-    height: 381px;
-    float: left;
-    margin-top: 20px;
-    padding: 10px;
-  }
 
+    #movie-list li {
+        display: inline-block;
+    }
+      #movie-list li img {
+        width: 254px;
+        height: 381px;
+        float: left;
+        margin-top: 20px;
+        padding: 10px;
+      }
+
+  #movie-container {
+      width: 1310px;
+      margin: auto;
+  }

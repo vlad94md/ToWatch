@@ -26,7 +26,7 @@ namespace ToWatch.Controllers.Api
         {
             try
             {
-                var movies = await GetMovieByCategory("upcoming");
+                var movies = await GetMovieByCategory("upcoming", page);
 
                 return Ok(movies);
             }
@@ -37,11 +37,11 @@ namespace ToWatch.Controllers.Api
         }
 
         [HttpGet]
-        public async Task<IActionResult> TopRated()
+        public async Task<IActionResult> TopRated(int page)
         {
             try
             {
-                var movies = await GetMovieByCategory("top_rated");
+                var movies = await GetMovieByCategory("top_rated", page);
 
                 return Ok(movies);
             }
@@ -55,7 +55,7 @@ namespace ToWatch.Controllers.Api
         {
             try
             {
-                var movies = await GetMovieByCategory("popular");
+                var movies = await GetMovieByCategory("popular", page);
 
                 return Ok(movies);
             }
@@ -65,10 +65,10 @@ namespace ToWatch.Controllers.Api
             }
         }
 
-        public async Task<MovieSetApiResponse> GetMovieByCategory(string category)
+        public async Task<MovieSetApiResponse> GetMovieByCategory(string category, int page)
         {
             var apiKey = _config["Keys:ImdbApiKey"];
-            var queryString = $"{category}?api_key={apiKey}&language=en-US&page=1";
+            var queryString = $"{category}?api_key={apiKey}&language=en-US&page={page}";
             var url = $"https://api.themoviedb.org/3/movie/{queryString}";
 
             try
